@@ -1,0 +1,27 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  #  每周日的午夜（UTC）
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          repository: qist/tvbox
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: upstream
+
+      - name: Sync
+        run: |
+          git config --global user.name "MrJiangLong"
+          git config --global user.email "njutjl@126.com"
+          git remote add upstream ./upstream
+          git fetch upstream
+          git checkout master  # 或者你想要同步的分支
+          git merge upstream/master  # 或者你想要同步的分支
+          git push origin master  # 或者你想要同步的分支
