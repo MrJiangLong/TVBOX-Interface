@@ -5,7 +5,7 @@ permissions:
 
 on:
     schedule:
-        - cron: '*/5 * * * *'  # 每分钟执行一次
+        - cron: '0 0 * * *'  # 每天的午夜（UTC时间）执行
     workflow_dispatch:
 
 jobs:
