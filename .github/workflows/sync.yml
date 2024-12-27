@@ -20,7 +20,7 @@ jobs:
         run: |
           git config --global user.name "MrJiangLong"
           git config --global user.email "njutjl@126.com"
-          git remote add upstream ./upstream
+          git remote add upstream https://github.com/qist/tvbox.git
           git fetch upstream
           git checkout master  # 或者你想要同步的分支
           git merge upstream/master  # 或者你想要同步的分支
